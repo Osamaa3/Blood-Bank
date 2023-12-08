@@ -1,0 +1,14 @@
+Blood Receiver:
+
+Description: This use case involves the process of providing blood to individuals or medical facilities in need, commonly known as blood recipients.
+
+Steps:
+
+The user (typically a medical professional or blood bank staff) initiates a request for blood based on a patient's needs.
+The system checks the database for available blood units that match the required blood type and other necessary criteria.
+Once a suitable match is found, the system generates a list of potential donors who meet the criteria for donation.
+The blood bank staff contacts the selected donor(s) to confirm availability and willingness to donate.
+After confirmation, the system updates the donor and recipient records accordingly, ensuring accurate tracking of blood transactions.
+The blood is then prepared and provided to the medical facility or recipient in need.
+
+These use cases collectively support the efficient management of blood donation activities, ensuring a robust and organized system for both donors and recipients while maintaining the integrity of the blood bank's database.
