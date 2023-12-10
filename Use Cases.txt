@@ -1,6 +1,24 @@
 Blood Bank Management system Use cases
 
-1. 
+1. Register a Donor:
+
+Description: This use case involves the process of registering a new donor into the blood bank system. The purpose is to maintain a comprehensive database of potential blood donors for future donation activities.
+
+Steps:
+
+The user (blood bank staff or administrator) initiates the donor registration process.
+The system prompts the user to enter the donor's personal information, including name, contact details, address, age, gender, and any relevant medical history.
+Additional information such as blood type and any previous donation records may be recorded.
+The system generates a unique donor ID and stores the donor's information securely in the database.
 
 
-2. 
+2. Blood Donation:
+
+Description: This use case represents the core activity of the blood bank – the process of collecting blood from registered donors.
+
+Steps:
+
+The user (blood bank staff) identifies available donors from the database who are eligible for donation based on criteria such as health status, recent donation history, and other relevant factors.
+The donor is contacted, and an appointment is scheduled for the blood donation.
+During the donation session, the donor's vital signs are recorded, and a brief medical examination may be conducted to ensure the donor is fit for donation.
+After a successful donation, the system updates the donor's records to reflect the new donation entry, including the date and quantity of blood donated.
