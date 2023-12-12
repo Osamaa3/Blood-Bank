@@ -22,3 +22,17 @@ The user (blood bank staff) identifies available donors from the database who ar
 The donor is contacted, and an appointment is scheduled for the blood donation.
 During the donation session, the donor's vital signs are recorded, and a brief medical examination may be conducted to ensure the donor is fit for donation.
 After a successful donation, the system updates the donor's records to reflect the new donation entry, including the date and quantity of blood donated.
+
+
+3. Blood Receiver:
+
+Description: This use case involves the process of providing blood to individuals or medical facilities in need, commonly known as blood recipients.
+
+Steps:
+
+The user (typically a medical professional or blood bank staff) initiates a request for blood based on a patient's needs.
+The system checks the database for available blood units that match the required blood type and other necessary criteria.
+Once a suitable match is found, the system generates a list of potential donors who meet the criteria for donation.
+The blood bank staff contacts the selected donor(s) to confirm availability and willingness to donate.
+After confirmation, the system updates the donor and recipient records accordingly, ensuring accurate tracking of blood transactions.
+The blood is then prepared and provided to the medical facility or recipient in need. 
