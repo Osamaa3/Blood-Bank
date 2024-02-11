@@ -1,0 +1,37 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SearchService WSDL service -->
+
+  <service name="Search" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://main"/>
+      <parameter name="wsdlServiceElement" value="SearchService"/>
+      <parameter name="schemaQualified" value="http://main"/>
+      <parameter name="wsdlServicePort" value="Search"/>
+      <parameter name="className" value="main.SearchSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Search"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="searchdonor" qname="operNS:searchdonor" xmlns:operNS="http://main" returnQName="retNS:searchdonorReturn" xmlns:retNS="http://main" returnType="rtns:Donor" xmlns:rtns="http://main" soapAction="" >
+        <parameter qname="pns:med_history" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="searchdonor"/>
+
+      <typeMapping
+        xmlns:ns="http://main"
+        qname="ns:Donor"
+        type="java:main.Donor"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
