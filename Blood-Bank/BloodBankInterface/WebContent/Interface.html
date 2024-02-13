@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Blood Bank</title>
+</head>
+<body>
+    <div id="first-section" hidden="hidden">
+        <h1>Donor Registration</h1>
+
+    </div>
+    <div id="second-section" hidden="hidden">
+        <h1>Register a donor</h1>
+
+        <form action="">
+            <input type="text" id="name" placeholder="Your Name" required><br>
+            <input type="number" id="age" placeholder="Your Age" required>
+            <input type="number" id="number" placeholder="Your Number" required><br>
+            <input type="text" id="type" placeholder="Your Blood Type" required><br>
+            <input type="text" id="address" placeholder="Your Address" required><br>
+            <select name="" id="gender" required><br>
+                
+                <option value="Male">Male</option>
+                <option value="Male">Female</option>
+            </select>
+            
+            <input type="text" id="history" placeholder="Your Medical History" required><br>
+            <input type="text" id="record" placeholder="Your Record" required><br>
+            <button type="button" onclick="getregistration()">Submit</button>
+        </form>
+    </div>
+	<div id="container">
+        <h1>Welcome to LifeFlow Blood Bank</h1>
+		<button type="button" onclick="register()">Register Donor</button>
+		<button type="button" onclick="show()">Search a Donor</button>
+		<button type="button" onclick="get()">Get a Donor</button>
+    </div>
+    
+    
+    
+    <div id="getdonor" hidden="hidden">
+        <h1>Get a Donor</h1>
+		<form  action="">
+            <input type="text" id="reqname" placeholder="Your Name" required><br>
+            <input type="text" id="details" placeholder="Patient Details" required><br>
+            <input type="text" id="reqtype" placeholder="Requested Blood Type" required><br>
+            <input type="text" id="criteria" placeholder="Criteria" required><br>
+            <input type="number" id="donorid" placeholder="Donor ID" required><br>
+           
+            <button type="button" onclick="updatereciever()">Submit</button>
+        </form>
+    </div>
+    <div id="searchdonor" hidden="hidden">
+        <h1>Search a Donor</h1>
+
+        <form action="">
+            <input type="text" id="bloodgroup" placeholder="Enter Blood Group" required>
+          
+            <button type="button" onclick="search()">Search</button>
+        </form>
+    </div>
+    
+    
+    <div id="showdonor" hidden="hidden">
+    	
+    </div>
+</body>
+<script>
+var parseXML;
+if (typeof window.DOMParser != "undefined") {
+	parseXML = function(xmlStr) {
+	return ( new window.DOMParser() ).parseFromString(xmlStr, "text/xml");
+};
+} else if (typeof window.ActiveXObject != "undefined" && new window.ActiveXObject("Microsoft.XMLDOM")) {
+	parseXML = function(xmlStr) {
+	var xmlDoc = new window.ActiveXObject("Microsoft.XMLDOM");
+	xmlDoc.async = "false";
+	xmlDoc.loadXML(xmlStr);
+	return xmlDoc;
+};
+} else {
+	throw new Error("No XML parser found");
+}
+
+function register(){
+	document.getElementById('container').remove();
+	document.getElementById('second-section').removeAttribute('hidden');
+}
+function show(){
+	document.getElementById('container').remove();
+	
+	document.getElementById('searchdonor').removeAttribute('hidden');
+	document.getElementById('showdonor').removeAttribute('hidden');
+	//document.getElementById('showdonor').removeAttribute('hidden');
+}
+function get(){
+	document.getElementById('container').remove();
+	document.getElementById('getdonor').removeAttribute('hidden');
+}
+
+function getregistration(){
+	name = document.getElementById('name').value
+	age = document.getElementById('age').value
+	number = document.getElementById('number').value
+	type = document.getElementById('type').value
+	address = document.getElementById('address').value
+	gender = document.getElementById('gender').value
+	history = document.getElementById('history').value
+	record = document.getElementById('record').value
+	
+	var myHeaders = new Headers();
+	myHeaders.append("SOAPAction", "\"\"");
+	myHeaders.append("Content-Type", "text/plain");
+
+	var raw = `<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Body>
+        <register xmlns="http://main">
+            <name>${name}</name>
+            <contact>${number}</contact>
+            <age>${age}</age>
+            <gender>${gender}</gender>
+            <address>${address}</address>
+            <blood_type>${type}</blood_type>
+            <med_history>${history}</med_history>
+            <record>${record}</record>
+        </register>
+    </Body>
+</Envelope>`
+
+	var requestOptions = {
+	  method: 'POST',
+	  headers: myHeaders,
+	  body: raw,
+	  redirect: 'follow'
+	};
+
+	fetch("http://localhost:8080/Blood-Bank-Management/services/Registration", requestOptions)
+	  .then(response => response.text())
+	  .then(result => {
+		  alert("donor has been registered");
+		  
+	  })
+	  .catch(error => console.log('error', error));
+}
+
+function updatereciever(){
+	reqname = document.getElementById('reqname').value
+	details = document.getElementById('details').value
+	type = document.getElementById('reqtype').value
+	criteria = document.getElementById('criteria').value
+	donorid = document.getElementById('donorid').value
+	
+	var myHeaders = new Headers();
+	myHeaders.append("SOAPAction", "\"\"");
+	myHeaders.append("Content-Type", "text/plain");
+
+	var raw = `<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Body>
+        <update xmlns="http://main">
+            <requser>${reqname}</requser>
+            <patientdeails>${details}</patientdeails>
+            <reqtype>${type}</reqtype>
+            <criteria>${criteria}</criteria>
+            <donorid>${donorid}</donorid>
+        </update>
+    </Body>
+</Envelope>`
+
+	var requestOptions = {
+	  method: 'POST',
+	  headers: myHeaders,
+	  body: raw,
+	  redirect: 'follow'
+	};
+
+	fetch("http://localhost:8080/Blood-Bank-Management/services/UpdateReceiver", requestOptions)
+	  .then(response => response.text())
+	  .then(result => {
+		  alert("Request accepted");
+	  })
+	  .catch(error => console.log('error', error));
+}
+
+function search(){
+	bloodgroup = document.getElementById('bloodgroup').value
+	
+	var myHeaders = new Headers();
+	myHeaders.append("SOAPAction", "\"\"");
+	myHeaders.append("Content-Type", "text/plain");
+
+	var raw = `<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Body>
+        <searchreceiver xmlns="http://main">
+            <type>${bloodgroup}</type>
+        </searchreceiver>
+    </Body>
+</Envelope>`
+
+	var requestOptions = {
+	  method: 'POST',
+	  headers: myHeaders,
+	  body: raw,
+	  redirect: 'follow'
+	};
+
+	fetch("http://localhost:8080/Blood-Bank-Management/services/BloodSearch", requestOptions)
+	  .then(response => response.text())
+	  .then(result => {
+		  var parser = new DOMParser();
+	        var xmlDoc = parser.parseFromString(result, "text/xml");
+
+	        // Extract donor IDs
+	        var donorIds = xmlDoc.getElementsByTagName("donorid");
+			console.log(donorIds);
+	        // Construct HTML content for each donor ID
+	        var htmlContent = "<h2>Donor Information</h2>";
+	        if (donorIds.length > 0) {
+	            htmlContent += "<ul>";
+	            for (var i = 0; i < donorIds.length; i++) {
+	                var donorId = donorIds[i].textContent;
+	                htmlContent += "<li>Donor ID: " + donorId + "</li>";
+	            }
+	            htmlContent += "</ul>";
+	        } else {
+	            htmlContent += "<p>No donors found for the given blood group.</p>";
+	        }
+
+	        // Update the showdonor div with the HTML content
+	        document.getElementById("showdonor").innerHTML = htmlContent;
+	  })
+	  .catch(error => console.log('error', error));
+	
+}
+</script>
+</html>
