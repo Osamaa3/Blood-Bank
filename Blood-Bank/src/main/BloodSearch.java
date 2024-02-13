@@ -13,11 +13,11 @@ public class BloodSearch{
 			Connection con =
 			DriverManager.getConnection("jdbc:mysql://localhost:3306/Blood Bank","root","");
 			Statement stmt=con.createStatement();
-			ResultSet r = stmt.executeQuery("select * from blooddonation where bloodtype = '"+type+"'");
+			ResultSet r = stmt.executeQuery("select count(*) from blooddonation where bloodtype = '"+type+"'");
 			r.next();
 			int count = r.getInt(1);
 			if(count>0) {				
-				ResultSet rs=stmt.executeQuery("select * from blooddonation where bloodtype = '"+type+"'");
+				ResultSet rs=stmt.executeQuery("select DonorID from blooddonation where bloodtype = '"+type+"'");
 				//select * from bloodonation where bloodtype = '"+type+"'
 				int noOfreceiver;
 				
@@ -31,15 +31,9 @@ public class BloodSearch{
 				int i = 0;
 				
 				while(rs.next()){
-					int requestid = rs.getInt(1);
-					String requser = rs.getString(2);
-					String patientdetails = rs.getString(3);
-					String reqtype = rs.getString(4);
-					String criteria = rs.getString(5);
-					String donorlist = rs.getString(6);
-
+					int donorid = rs.getInt(1);
 					//
-					receiver[i] = new Receiver(requestid,requser,patientdetails,reqtype,criteria,donorlist);
+					receiver[i] = new Receiver(donorid);
 					System.out.println(receiver);
 					
 					i++;

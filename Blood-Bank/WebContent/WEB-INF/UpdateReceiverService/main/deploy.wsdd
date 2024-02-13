@@ -15,7 +15,7 @@
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:patientdeails" type="tns:string"/>
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:reqtype" type="tns:string"/>
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:criteria" type="tns:string"/>
-        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:donorlist" type="tns:string"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:donorid" type="tns:string"/>
       </operation>
       <parameter name="allowedMethods" value="update"/>
 

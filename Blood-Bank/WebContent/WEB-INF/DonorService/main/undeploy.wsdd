@@ -9,7 +9,7 @@
 <undeployment
     xmlns="http://xml.apache.org/axis/wsdd/">
 
-  <!-- Services from BloodSearchService WSDL service -->
+  <!-- Services from DonorService WSDL service -->
 
-  <service name="BloodSearch"/>
+  <service name="Donor"/>
 </undeployment>

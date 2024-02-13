@@ -10,15 +10,15 @@
     xmlns="http://xml.apache.org/axis/wsdd/"
     xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 
-  <!-- Services from BloodsearchService WSDL service -->
+  <!-- Services from BloodSearchService WSDL service -->
 
-  <service name="Bloodsearch" provider="java:RPC" style="wrapped" use="literal">
+  <service name="BloodSearch" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://main"/>
-      <parameter name="wsdlServiceElement" value="BloodsearchService"/>
+      <parameter name="wsdlServiceElement" value="BloodSearchService"/>
       <parameter name="schemaQualified" value="http://main"/>
-      <parameter name="wsdlServicePort" value="Bloodsearch"/>
-      <parameter name="className" value="main.BloodsearchSoapBindingImpl"/>
-      <parameter name="wsdlPortType" value="Bloodsearch"/>
+      <parameter name="wsdlServicePort" value="BloodSearch"/>
+      <parameter name="className" value="main.BloodSearchSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BloodSearch"/>
       <parameter name="typeMappingVersion" value="1.2"/>
       <operation name="searchreceiver" qname="operNS:searchreceiver" xmlns:operNS="http://main" returnQName="retNS:searchreceiverReturn" xmlns:retNS="http://main" returnType="rtns:Receiver" xmlns:rtns="http://main" soapAction="" >
         <parameter qname="pns:type" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>

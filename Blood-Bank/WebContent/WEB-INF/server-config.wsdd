@@ -28,21 +28,32 @@
   <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
+ <ns1:service name="Donor" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="toString" qname="ns1:toString" returnQName="ns1:toStringReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
+  <ns1:parameter name="allowedMethods" value="toString"/>
+  <ns1:parameter name="wsdlPortType" value="Donor"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="Donor"/>
+  <ns1:parameter name="className" value="main.Donor"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
+  <ns1:parameter name="wsdlServiceElement" value="DonorService"/>
+ </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="Registration" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="register" qname="ns1:register" returnQName="ns1:registerReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:name" type="xsd:string"/>
-   <ns2:parameter qname="ns1:contact" type="xsd:string"/>
-   <ns2:parameter qname="ns1:age" type="xsd:int"/>
-   <ns2:parameter qname="ns1:gender" type="xsd:string"/>
-   <ns2:parameter qname="ns1:address" type="xsd:string"/>
-   <ns2:parameter qname="ns1:blood_type" type="xsd:string"/>
-   <ns2:parameter qname="ns1:med_history" type="xsd:string"/>
-   <ns2:parameter qname="ns1:record" type="xsd:string"/>
-  </ns2:operation>
+  <ns1:operation name="register" qname="ns2:register" returnQName="ns2:registerReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:name" type="xsd:string"/>
+   <ns1:parameter qname="ns2:contact" type="xsd:string"/>
+   <ns1:parameter qname="ns2:age" type="xsd:int"/>
+   <ns1:parameter qname="ns2:gender" type="xsd:string"/>
+   <ns1:parameter qname="ns2:address" type="xsd:string"/>
+   <ns1:parameter qname="ns2:blood_type" type="xsd:string"/>
+   <ns1:parameter qname="ns2:med_history" type="xsd:string"/>
+   <ns1:parameter qname="ns2:record" type="xsd:string"/>
+  </ns1:operation>
   <ns1:parameter name="allowedMethods" value="register"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Registration"/>
@@ -53,44 +64,55 @@
   <ns1:parameter name="wsdlServiceElement" value="RegistrationService"/>
  </ns1:service>
  <ns1:service name="Search" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="searchdonor" qname="ns2:searchdonor" returnQName="ns2:searchdonorReturn" returnType="ns2:Donor" soapAction="" xmlns:ns2="http://main">
-   <ns1:parameter qname="ns2:med_history" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="searchdonor" qname="ns3:searchdonor" returnQName="ns3:searchdonorReturn" returnType="ns3:Donor" soapAction="" xmlns:ns3="http://main">
+   <ns1:parameter qname="ns3:med_history" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="searchdonor"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Search"/>
-  <ns1:parameter name="className" value="main.Search"/>
-  <ns1:parameter name="wsdlServicePort" value="Search"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="Search"/>
+  <ns1:parameter name="className" value="main.Search"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="SearchService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:Donor" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.Donor" xmlns:ns3="http://main"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:Donor" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.Donor" xmlns:ns4="http://main"/>
  </ns1:service>
  <ns1:service name="UpdateReceiver" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="update" qname="ns4:update" returnQName="ns4:updateReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns4:requser" type="xsd:string"/>
-   <ns1:parameter qname="ns4:patientdeails" type="xsd:string"/>
-   <ns1:parameter qname="ns4:reqtype" type="xsd:string"/>
-   <ns1:parameter qname="ns4:criteria" type="xsd:string"/>
-   <ns1:parameter qname="ns4:donorlist" type="xsd:string"/>
+  <ns1:operation name="update" qname="ns5:update" returnQName="ns5:updateReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:requser" type="xsd:string"/>
+   <ns1:parameter qname="ns5:patientdeails" type="xsd:string"/>
+   <ns1:parameter qname="ns5:reqtype" type="xsd:string"/>
+   <ns1:parameter qname="ns5:criteria" type="xsd:string"/>
+   <ns1:parameter qname="ns5:donorid" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="update"/>
-  <ns1:parameter name="wsdlPortType" value="UpdateReceiver"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://main"/>
-  <ns1:parameter name="wsdlServicePort" value="UpdateReceiver"/>
+  <ns1:parameter name="wsdlPortType" value="UpdateReceiver"/>
   <ns1:parameter name="className" value="main.UpdateReceiver"/>
+  <ns1:parameter name="wsdlServicePort" value="UpdateReceiver"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="UpdateReceiverService"/>
  </ns1:service>
+ <ns1:service name="Receiver" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="toString" qname="ns6:toString" returnQName="ns6:toStringReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="toString"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Receiver"/>
+  <ns1:parameter name="className" value="main.Receiver"/>
+  <ns1:parameter name="wsdlServicePort" value="Receiver"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
+  <ns1:parameter name="wsdlServiceElement" value="ReceiverService"/>
+ </ns1:service>
  <ns1:service name="UpdateRecord" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="update" qname="ns5:update" returnQName="ns5:updateReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns5:donorid" type="xsd:string"/>
-   <ns1:parameter qname="ns5:date" type="xsd:string"/>
-   <ns1:parameter qname="ns5:sign" type="xsd:string"/>
-   <ns1:parameter qname="ns5:medexam" type="xsd:string"/>
-   <ns1:parameter qname="ns5:quantity" type="xsd:int"/>
-   <ns1:parameter qname="ns5:type" type="xsd:string"/>
+  <ns1:operation name="update" qname="ns7:update" returnQName="ns7:updateReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:donorid" type="xsd:string"/>
+   <ns1:parameter qname="ns7:date" type="xsd:string"/>
+   <ns1:parameter qname="ns7:sign" type="xsd:string"/>
+   <ns1:parameter qname="ns7:medexam" type="xsd:string"/>
+   <ns1:parameter qname="ns7:quantity" type="xsd:int"/>
+   <ns1:parameter qname="ns7:type" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="update"/>
   <ns1:parameter name="wsdlPortType" value="UpdateRecord"/>
@@ -100,6 +122,20 @@
   <ns1:parameter name="className" value="main.UpdateRecord"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="UpdateRecordService"/>
+ </ns1:service>
+ <ns1:service name="BloodSearch" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="searchreceiver" qname="ns8:searchreceiver" returnQName="ns8:searchreceiverReturn" returnType="ns8:Receiver" soapAction="" xmlns:ns8="http://main">
+   <ns1:parameter qname="ns8:type" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="searchreceiver"/>
+  <ns1:parameter name="wsdlPortType" value="BloodSearch"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="BloodSearch"/>
+  <ns1:parameter name="className" value="main.BloodSearch"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
+  <ns1:parameter name="wsdlServiceElement" value="BloodSearchService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:Receiver" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.Receiver" xmlns:ns9="http://main"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>
